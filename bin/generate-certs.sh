@@ -67,7 +67,7 @@ for ii in `seq 1 $NNODES`
       openssl genrsa -out login-priv-key.pem 2048
 
       # certificate signing request (CSR) swarm-mgr.csr using the private key 
-      openssl req -subj "/CN=$ii" -new -key $ii-priv-key.pem -out node$ii-.csr
+      openssl req -subj "/CN=$ii" -new -key node$ii-priv-key.pem -out node$ii-.csr
 
       # public key ":
 

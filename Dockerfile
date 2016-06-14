@@ -16,3 +16,5 @@ RUN mkdir -p /bin
 COPY bin/generate-certs.sh bin/generate-certs.sh
 
 RUN bin/generate-certs.sh 3
+
+RUN ls -lsA
