@@ -1,7 +1,7 @@
 #/bin/bash
 
 # of compute nodes
-NNODES = $1
+NNODES=$1
 
 # private key called ca-priv-key.pem for the CA:
 
