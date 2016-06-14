@@ -7,16 +7,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
+MKDIR /bin
 
 
-# private key called ca-priv-key.pem for the CA:
 
-RUN openssl genrsa -out ca-priv-key.pem 2048
+# cert creation in bash file
 
-# public key :
-
-RUN openssl req -config /usr/lib/ssl/openssl.cnf \
-                -new -key ca-priv-key.pem \
-		-x509 -days 1825 \
-		-subj '/C=US/ST=Oregon/L=Portland/O=IT/CN=www.example.com' \
-		-out ca.pem
+COPY bin/generate-certs.sh bin/generate-certs.sh
