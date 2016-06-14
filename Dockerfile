@@ -14,3 +14,5 @@ MKDIR /bin
 # cert creation in bash file
 
 COPY bin/generate-certs.sh bin/generate-certs.sh
+
+RUN bin/generate-certs.sh
