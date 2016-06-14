@@ -14,5 +14,5 @@ openssl req -config /usr/lib/ssl/openssl.cnf -new -key ca-priv-key.pem -x509 -da
 
 for ii in {1..${NNODES}}
 do
-    echo "Hello $ii"
+    echo "Hello from node $ii"
 done
