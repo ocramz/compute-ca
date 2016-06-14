@@ -60,7 +60,18 @@ openssl rsa -in login-priv-key.pem -out login-priv-key.pem
 
 
 
-for ii in swarm login `seq 1 $NNODES`
+for ii in `seq 1 $NNODES`
   do
-    echo "Hello from node $ii\n"
+      echo "Creating keypair for node $ii\n"
+      # private key  ca-priv-key.pem :
+      openssl genrsa -out login-priv-key.pem 2048
+
+      # certificate signing request (CSR) swarm-mgr.csr using the private key 
+      openssl req -subj "/CN=$ii" -new -key $ii-priv-key.pem -out node$ii-.csr
+
+      # public key ":
+
+      openssl x509 -req -days 1825 -in node$ii.csr -CA ca.pem -CAkey ca-priv-key.pem -CAcreateserial -out node$ii-cert.pem -extensions v3_req -extfile /usr/lib/ssl/openssl.cnf
+
+      openssl rsa -in node$ii-priv-key.pem -out node$ii-priv-key.pem
   done
