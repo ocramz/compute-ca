@@ -18,5 +18,5 @@ RUN openssl genrsa -out ca-priv-key.pem 2048
 RUN openssl req -config /usr/lib/ssl/openssl.cnf \
                 -new -key ca-priv-key.pem \
 		-x509 -days 1825 \
-		-subj “/C=US/ST=Oregon/L=Portland/O=IT/CN=www.example.com” \
+		-subj '/C=US/ST=Oregon/L=Portland/O=IT/CN=www.example.com' \
 		-out ca.pem
