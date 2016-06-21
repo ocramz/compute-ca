@@ -1,5 +1,5 @@
 # # # compute-ca
-FROM phusion/baseimage
+FROM ocramz/docker-phusion-supervisor
 
 
 RUN apt-get update && \
