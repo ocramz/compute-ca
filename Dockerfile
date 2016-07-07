@@ -1,7 +1,10 @@
 # # # compute-ca
 FROM ocramz/docker-phusion-supervisor
 
-ENV NNODES 2
+ENV NNODES=2 \
+    TLS_DIR=${HOME}/.tls
+
+RUN mkdir -p ${TLS_DIR}
 
 
 RUN apt-get update && \
@@ -9,12 +12,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN mkdir -p /bin
-
-
 
 # cert creation in bash file
+COPY bin/generate-certs.sh ${TLS_DIR}/generate-certs.sh
 
-COPY bin/generate-certs.sh bin/generate-certs.sh
 
-CMD bin/generate-certs.sh ${NNODES}
+WORKDIR ${TLS_DIR}
+
+CMD ${TLS_DIR}/generate-certs.sh ${NNODES}
