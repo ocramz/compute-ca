@@ -76,4 +76,4 @@ for ii in `seq 1 $NNODES`
 
 
 
-ls -lsA
+# ls -lsA
