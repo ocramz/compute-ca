@@ -73,3 +73,7 @@ for ii in `seq 1 $NNODES`
 
       openssl rsa -in node$ii-priv-key.pem -out node$ii-priv-key.pem
   done
+
+
+
+ls -lsA

@@ -1,7 +1,7 @@
 # # # compute-ca
 FROM ocramz/docker-phusion-supervisor
 
-ENV NNODES 3
+ENV NNODES 2
 
 
 RUN apt-get update && \
@@ -17,8 +17,4 @@ RUN mkdir -p /bin
 
 COPY bin/generate-certs.sh bin/generate-certs.sh
 
-# RUN bin/generate-certs.sh 3
-
-RUN ls -lsA
-
-CMD ["/bin/bash", "-c", "bin/generate-certs.sh", "${NNODES}"]
+CMD bin/generate-certs.sh ${NNODES}
