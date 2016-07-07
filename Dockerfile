@@ -22,5 +22,4 @@ COPY bin/generate-certs.sh bin/generate-certs.sh
 RUN ls -lsA
 
 
-ENTRYPOINT ["/bin/bash", "-c", "bin/generate-certs.sh"]
-CMD ["$NNODES"]
+CMD ["/bin/bash", "-c", "bin/generate-certs.sh", "$NNODES"]

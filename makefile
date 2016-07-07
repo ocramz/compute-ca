@@ -23,3 +23,6 @@ login:
 
 push: build login
 	docker push $(TAG)
+
+run: build
+	docker run --rm -it $(TAG)
