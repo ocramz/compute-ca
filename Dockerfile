@@ -1,6 +1,8 @@
 # # # compute-ca
 FROM ocramz/docker-phusion-supervisor
 
+ENV NNODES 3
+
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ca-certificates debian-keyring debian-archive-keyring openssl && \
@@ -15,6 +17,10 @@ RUN mkdir -p /bin
 
 COPY bin/generate-certs.sh bin/generate-certs.sh
 
-RUN bin/generate-certs.sh 3
+# RUN bin/generate-certs.sh 3
 
 RUN ls -lsA
+
+
+ENTRYPOINT ["/bin/bash", "-c", "bin/generate-certs.sh"]
+CMD ["$NNODES"]
