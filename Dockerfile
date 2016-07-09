@@ -19,4 +19,4 @@ COPY bin/generate-certs.sh ${TLS_DIR}/generate-certs.sh
 
 WORKDIR ${TLS_DIR}
 
-CMD ${TLS_DIR}/generate-certs.sh ${NNODES}
+# CMD ${TLS_DIR}/generate-certs.sh ${NNODES}
