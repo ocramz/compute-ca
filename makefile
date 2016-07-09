@@ -11,6 +11,8 @@ help:
 	@echo "  rebuild  '', ignoring previous builds"
 	@echo "  login    to login to your docker account"
 	@echo "  push     to push the image to the docker registry"
+	@echo "  run      run the image"
+	@echo "  run0     run a bash shell in the image"
 
 build:
 	docker build -t $(TAG) .
@@ -26,3 +28,6 @@ push: build login
 
 run: build
 	docker run --rm -it $(TAG)
+
+run0: build
+	docker run --rm -it $(TAG) /bin/bash
